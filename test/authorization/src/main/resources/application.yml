@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    active: local
+
+---
+# local environment
+spring:
+  profiles: local
+  datasource:
+    url: jdbc:mariadb://127.0.0.1:3306/projectdb
+    username: project
+    password: 1234
+    driver-class-name: org.mariadb.jdbc.Driver
+
+---
+# dev environment
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mariadb://66.42.43.41:3306/projectdb
+    username: project
+    password: vmfhwprxm12#
+    driver-class-name: org.mariadb.jdbc.Driver
