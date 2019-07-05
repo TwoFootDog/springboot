@@ -28,6 +28,12 @@ public class MemberVO {
     @Column(name = "user_email", nullable = false, unique = true, length = 50)
     private String userEmail;
 
+    @Column(name = "user_first_name", nullable = false, length = 50)
+    private String userFirstName;
+
+    @Column(name = "user_last_name", nullable = false, length = 50)
+    private String userLastName;
+
     @Column(name = "reg_id", length = 20)
     private String regId;
 
