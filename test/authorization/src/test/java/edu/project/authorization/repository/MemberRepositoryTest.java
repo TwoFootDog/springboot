@@ -26,7 +26,7 @@ public class MemberRepositoryTest {
             memberVO.setUserId("user" + i);
             memberVO.setUserPasswd("pw" + i);
             memberVO.setUserEmail("kmk" + i + "@gmail.com");
-            memberVO.setUserFirstName("minkyu");
+            memberVO.setUsername("minkyu");
             memberVO.setUserLastName("kang");
             MemberRoleVO memberRoleVO = new MemberRoleVO();
             if (i <= 30) {
