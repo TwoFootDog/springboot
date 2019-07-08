@@ -20,14 +20,20 @@ public class MemberController {
     @Autowired
     MemberRepository memberRepository;
 
-//    @PostMapping(value = "/signin")
-//    public String login() {
-//        log.info("controller login>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-//        return "login";
-//    }
+    @GetMapping(value = "/signin")
+    public String signIn() {
+        log.info("controller login>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>signin");
+        return "signin";
+    }
+
+    @GetMapping(value = "/signout")
+    public String signOut() {
+        log.info("controller login>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>singout");
+        return "signout";
+    }
 
     @PostMapping(value = "/signup")
-    public MemberVO register(@RequestBody MemberVO memberVO) {
+    public MemberVO signUp(@RequestBody MemberVO memberVO) {
         log.info("memberVO : " + memberVO);
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         memberVO.setUserPasswd(passwordEncoder.encode(memberVO.getUserPasswd()));

@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface MemberRepository extends CrudRepository<MemberVO, Long> {
-    public MemberVO findByUsername(String username);
+    public MemberVO findByUserId(String userId);
 }

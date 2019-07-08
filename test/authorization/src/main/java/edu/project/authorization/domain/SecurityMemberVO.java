@@ -14,8 +14,9 @@ public class SecurityMemberVO extends User {
     private static final long serialVersionID = 1L;
 
     public SecurityMemberVO(MemberVO memberVO) {
-        super(memberVO.getUsername(), memberVO.getUserPasswd(), makeGrantedAuthority(memberVO.getMemberRole()));
-        log.info("SecurityMemberVO>>>>>>>>>>>>>>>>>>>>>");
+        super(memberVO.getUserId(), memberVO.getUserPasswd(), makeGrantedAuthority(memberVO.getMemberRole()));
+        log.info("SecurityMemberVO>>>>>>>>>>>>>>>>>>>>>userId : " + memberVO.getUserId());
+        log.info("SecurityMemberVO>>>>>>>>>>>>>>>>>>>>>password : " + memberVO.getUserPasswd());
     }
 
     public static List<GrantedAuthority> makeGrantedAuthority(List<MemberRoleVO> roles) {
