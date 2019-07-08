@@ -29,8 +29,8 @@ public class MemberController {
     @PostMapping(value = "/register")
     public MemberVO register(@RequestBody MemberVO memberVO) {
         log.info("memberVO : " + memberVO);
-//        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//        memberVO.setUserPasswd(passwordEncoder.encode(memberVO.getUserPasswd()));
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        memberVO.setUserPasswd(passwordEncoder.encode(memberVO.getUserPasswd()));
         MemberRoleVO memberRoleVO = new MemberRoleVO();
         memberRoleVO.setRoleName("MASTER");
         memberVO.setMemberRole(Arrays.asList(memberRoleVO));
