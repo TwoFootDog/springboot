@@ -13,20 +13,20 @@ import java.util.Arrays;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/member")
+//@RequestMapping("/member")
 @Slf4j
 public class MemberController {
 
     @Autowired
     MemberRepository memberRepository;
 
-//    @ResponseBody
-    @GetMapping(value = "/login")
-    public Object login() {
-        return new Object();
-    }
+//    @PostMapping(value = "/signin")
+//    public String login() {
+//        log.info("controller login>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+//        return "login";
+//    }
 
-    @PostMapping(value = "/register")
+    @PostMapping(value = "/signup")
     public MemberVO register(@RequestBody MemberVO memberVO) {
         log.info("memberVO : " + memberVO);
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();

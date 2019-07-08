@@ -29,7 +29,7 @@ public class MemberVO {
     private String userEmail;
 
     @Column(name = "user_first_name", nullable = false, length = 50)
-    private String userFirstName;
+    private String username;
 
     @Column(name = "user_last_name", nullable = false, length = 50)
     private String userLastName;
