@@ -1,16 +1,20 @@
 package edu.project.authorization.config;
 
 import edu.project.authorization.service.AuthProviderService;
+import edu.project.authorization.service.CustomUserDetailsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -23,14 +27,17 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Slf4j
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
+/*    @Autowired
     AuthProviderService authProviderService;
 
     @Autowired
     AuthSuccessHandler authSuccessHandler;
 
     @Autowired
-    AuthFailureHandler authFailureHandler;
+    AuthFailureHandler authFailureHandler;*/
+
+    @Autowired
+    CustomUserDetailsService customUserDetailsService;
 
     @Override
     public void configure(WebSecurity web) throws Exception {
@@ -45,14 +52,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                    .antMatchers("/", "/signin").permitAll()
-//                    .antMatchers("/**").hasRole("USER")
-//                    .antMatchers("/**").hasRole("ADMIN")
-//                    .antMatchers("/admin/**").hasRole("ADMIN")
-//                    .antMatchers("/**").authenticated()
+                    .antMatchers("/", "/signup", "/signin").permitAll()
+                    .antMatchers("/**").hasRole("USER")
+                    .antMatchers("/**").hasRole("ADMIN")
+                    .antMatchers("/admin/**").hasRole("ADMIN")
+                    .antMatchers("/**").authenticated()
                     .anyRequest().authenticated()
                 .and()
-                    .formLogin()
+/*                    .formLogin()
                     .loginPage("/signin")
                     .defaultSuccessUrl("/")
                     .usernameParameter("userId")
@@ -60,10 +67,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .failureHandler(authFailureHandler)
                     .successHandler(authSuccessHandler)
                     .permitAll()
-                .and()
-                    .logout().logoutRequestMatcher(new AntPathRequestMatcher("/signout"))
+                .and()*/
+                    .logout();
+/*                    .logoutRequestMatcher(new AntPathRequestMatcher("/signout"))
                     .logoutSuccessUrl("/")
-                    .permitAll();
+                    .permitAll();*/
 //                    .invalidateHttpSession(true);
 //                .and()
 //                    .authenticationProvider(authProviderService);
@@ -88,9 +96,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();*/
     }
 
+    @Autowired
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        // UserDetailsService 를 이용한 인증처리
+        log.info("congifureGlobal1>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        log.info("customUserDetailService>>>>>>>>>>>>>>" + customUserDetailsService);
+        auth.userDetailsService(customUserDetailsService).passwordEncoder(bcryptPasswordEncoder());
+    }
+
+    @Bean
+    public PasswordEncoder bcryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) {
-        auth.authenticationProvider(authProviderService);
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        // Spring Security에서 사용되는 인증객체를 Bean으로 등록할 때 사용됨
+        log.info("authenticationManagerBean>>>>>>>>>>>>>");
+        return super.authenticationManagerBean();
     }
 
 
@@ -113,17 +137,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
         return source;
     }*/
-/*    @Bean
-    public PasswordEncoder bcryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
 
-    @Autowired
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        // UserDetailsService 를 이용한 인증처리
-        log.info("congifureGlobal1>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-        log.info("customUserDetailService>>>>>>>>>>>>>>" + customUserDetailsService);
-        auth.userDetailsService(customUserDetailsService).passwordEncoder(bcryptPasswordEncoder());
-    }*/
 
 }

@@ -1,13 +1,21 @@
 package edu.project.authorization.controller;
 
+import edu.project.authorization.domain.AuthenticationRequestVO;
+import edu.project.authorization.domain.AuthenticationTokenVO;
 import edu.project.authorization.domain.MemberRoleVO;
 import edu.project.authorization.domain.MemberVO;
 import edu.project.authorization.repository.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 
 
@@ -18,12 +26,27 @@ import java.util.Arrays;
 public class MemberController {
 
     @Autowired
+    AuthenticationManager authenticationManager;
+    @Autowired
     MemberRepository memberRepository;
 
-    @GetMapping(value = "/signin")
-    public String signIn() {
-        log.info("controller login>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>signin");
-        return "signin";
+    @PostMapping(value = "/signin")
+    public AuthenticationTokenVO signIn(@RequestBody AuthenticationRequestVO authenticationRequestVO, HttpSession httpSession) {
+
+        String userId = authenticationRequestVO.getUserId();
+        String userPasswd = authenticationRequestVO.getUserPasswd();
+        log.info("controller login>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>signin" + userId + userPasswd);
+
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userId, userPasswd);
+        Authentication authentication = authenticationManager.authenticate(token);
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        httpSession.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, SecurityContextHolder.getContext());
+//        MemberVO memberVO = memberRepository.findByUserId(userId);
+
+//        log.info("signIn>>>>>>>>>>>>> : " + memberVO.getUserId() + memberVO.getMemberRole() + httpSession.getId());
+        return new AuthenticationTokenVO(authentication.getName(), authentication.getAuthorities(), httpSession.getId());
+//        return new AuthenticationTokenVO(memberVO.getUserId(), memberVO.getMemberRole(), httpSession.getId());
     }
 
     @GetMapping(value = "/signout")

@@ -30,11 +30,7 @@ public class AuthProviderService implements AuthenticationProvider {
         String passwd = authentication.getCredentials().toString();
         log.info("id >>>>>>>>>>>>>> " + id);
         log.info("passwd >>>>>>>>>>>>>> " + passwd);
-        log.info(">>>>>>>>" + authentication.toString());
-        log.info(">>>>>>>>" + authentication.getDetails());
-        log.info(">>>>>>>>" + authentication.getPrincipal());
 
-//        String id1="user0";
         MemberVO memberVO = memberRepository.findByUserId(id);
 //        if (memberVO == null || !memberVO.getUserPasswd().equals(passwd)) {
 //        if (memberVO == null) {
