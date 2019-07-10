@@ -10,4 +10,7 @@ import lombok.NoArgsConstructor;
 public class AuthenticationRequestVO {
     private String userId;
     private String userPasswd;
+    private String userEmail;
+    private String userFirstName;
+    private String userLastName;
 }
