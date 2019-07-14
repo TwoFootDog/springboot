@@ -3,6 +3,9 @@ spring:
     active: local
 
 ---
+jwt:
+  secret: dkqjwlrkqkddpemfdjrktlsek
+---
 # local environment
 spring:
   profiles: local

@@ -1,6 +1,9 @@
 package edu.project.authorization.config;
 
+import edu.project.authorization.service.UserAuthService;
 import edu.project.authorization.service.UserAuthServiceImpl;
+import edu.project.authorization.util.JwtAuthenticationFilter;
+import edu.project.authorization.util.JwtTokenProvider;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -13,14 +16,21 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 @Slf4j
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private final JwtTokenProvider jwtTokenProvider;
+    private final UserAuthService userAuthService;
+
     @Autowired
-    UserAuthServiceImpl userAuthServiceImpl;
+    public SecurityConfig(JwtTokenProvider jwtTokenProvider, UserAuthService userAuthService) {
+        this.jwtTokenProvider = jwtTokenProvider;
+        this.userAuthService = userAuthService;
+    }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
@@ -40,15 +50,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/**").hasRole("ADMIN")    // ADMIN 권한에 접근 허용
                     .antMatchers("/admin/**").hasRole("ADMIN")
                     .antMatchers("/**").authenticated()
-                    .anyRequest().authenticated()
-                .and().logout();
+                    .anyRequest().authenticated()   // 인증된 사용자인지 확인
+                .and()
+                    .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
+//                .and().logout();
         http.csrf().disable();
     }
 
     @Autowired
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         /* UserDetailsService 를 이용한 인증처리 */
-        auth.userDetailsService(userAuthServiceImpl).passwordEncoder(bcryptPasswordEncoder());
+        auth.userDetailsService(userAuthService).passwordEncoder(bcryptPasswordEncoder());
     }
 
     @Bean

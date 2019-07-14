@@ -28,6 +28,7 @@ public class UserAuthServiceImpl implements UserAuthService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         MemberVO memberVO = memberRepository.findByUserId(username);
         User user = new User(memberVO.getUserId(), memberVO.getUserPasswd(), makeGrantedAuthority(memberVO.getMemberRole()));
+        log.info("UserAuthService user : " + user);
         return user;
     }
 
