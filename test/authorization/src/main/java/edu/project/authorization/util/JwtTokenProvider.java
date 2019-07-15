@@ -12,15 +12,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
-import java.util.Base64;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Component
 @Slf4j
@@ -46,9 +45,11 @@ public class JwtTokenProvider { // Jwt 토큰 생성 및 검증 모듈
     }
 
     // Jwt 토큰 생성
-    public String generateToken(MemberVO memberVO) {
-        Claims claims = Jwts.claims().setSubject(memberVO.getUserId());
-        claims.put("roles", memberVO.getMemberRole());
+    public String generateToken(Authentication authentication) {
+//        Claims claims = Jwts.claims().setSubject(memberVO.getUserId());
+//        claims.put("roles", memberVO.getMemberRole());
+        Claims claims = Jwts.claims().setSubject(authentication.getName());
+        claims.put("roles", authentication.getAuthorities());
         Date nowDate = new Date();
         log.info("generateToken >>>>>>>>>>>>>>>>>>>>>>");
         return Jwts.builder()

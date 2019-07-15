@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Arrays;
+import java.util.Iterator;
 
 
 @CrossOrigin("*")
@@ -60,17 +62,11 @@ public class MemberController {
         httpSession.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, SecurityContextHolder.getContext());
 
         /* Jwt 생성 */
-        log.info("Authentication >>>>>>>>>>>getName" + authentication.getName());
-        log.info("Authentication >>>>>>>>>>>getPrincipal" + authentication.getPrincipal());
-        log.info("Authentication >>>>>>>>>>>getDetails" + authentication.getDetails());
-        log.info("Authentication >>>>>>>>>>>getAuthorities" + authentication.getAuthorities());
-//        String jwt = jwtTokenProvider.generateToken()
-
-
-        return new AuthenticationTokenVO(authentication.getName(), authentication.getAuthorities(), httpSession.getId());
+        String jwt = jwtTokenProvider.generateToken(authentication);
+        return new AuthenticationTokenVO(authentication.getName(), authentication.getAuthorities(), jwt);
     }
 
-    @GetMapping(value = "/signout")
+    @PostMapping(value = "/signout")
     public String signOut() {
         log.info("controller login>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>singout");
         return "signout";
