@@ -28,8 +28,10 @@ public class JwtAuthenticationFilter extends GenericFilterBean {    // Jwt가 �
             Authentication authentication = jwtTokenProvider.getAuthentication(token);
             SecurityContextHolder.getContext().setAuthentication(authentication);
             log.info("token dofilter >>>>>>>>");
+        } else {
+            log.info("token is invalid>>>>>>>");
         }
         log.info("doFilter>>>>>>>>>>>>>>>>>>>>>>");
-        chain.doFilter(request, response);
+        chain.doFilter(request, response);  // Filter를 FilterChain에 등록
     }
 }

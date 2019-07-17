@@ -46,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                    .antMatchers("/", "/signup", "/signin").permitAll() // 모든 권한에 접근 허용
+                    .antMatchers("/", "/signup", "/signin", "/tokenValidChk").permitAll() // 모든 권한에 접근 허용
                     .antMatchers("/**").hasRole("USER")     // USER 권한에 접근 허용
                     .antMatchers("/**").hasRole("ADMIN")    // ADMIN 권한에 접근 허용
                     .antMatchers("/admin/**").hasRole("ADMIN")

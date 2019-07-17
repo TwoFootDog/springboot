@@ -17,6 +17,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -27,7 +28,7 @@ import java.util.Iterator;
 
 @CrossOrigin("*")
 @RestController
-//@RequestMapping("/member")
+//@RequestMapping("/auth")
 @Slf4j
 public class MemberController {
 
@@ -41,6 +42,7 @@ public class MemberController {
     JwtTokenProvider jwtTokenProvider;
 
 
+    /* 로그인 API */
     @PostMapping(value = "/signin")
     public AuthenticationTokenVO signIn(@RequestBody AuthenticationRequestVO authenticationRequestVO, HttpSession httpSession) {
 
@@ -66,12 +68,14 @@ public class MemberController {
         return new AuthenticationTokenVO(authentication.getName(), authentication.getAuthorities(), jwt);
     }
 
+    /* 로그아웃 API */
     @PostMapping(value = "/signout")
     public String signOut() {
         log.info("controller login>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>singout");
         return "signout";
     }
 
+    /* 회원가입 API */
     @PostMapping(value = "/signup")
     public MemberVO signUp(@RequestBody AuthenticationRequestVO authenticationRequestVO, HttpSession httpSession) {
 
@@ -87,5 +91,12 @@ public class MemberController {
         memberVO.setUserLastName(authenticationRequestVO.getUserLastName());
         memberVO.setMemberRole(Arrays.asList(memberRoleVO));
         return memberRepository.save(memberVO);
+    }
+
+    /* token이 유효한지 체크하는 api. 진짜 체크는 JwtAuthenticationFilter에서 수행하고 해당 api는 URL만 제공한다 */
+    @GetMapping(value = "/tokenValidChk")
+    public Boolean tokenValidChk() {
+        log.info("tokenvalidchk>>>>>>>>>>>>>>>>");
+        return true;
     }
 }
