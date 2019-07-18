@@ -31,7 +31,7 @@ public class JwtAuthenticationFilter extends GenericFilterBean {    // Jwt가 �
         } else {
             log.info("token is invalid>>>>>>>");
         }
-        log.info("doFilter>>>>>>>>>>>>>>>>>>>>>>");
+        log.info("doFilter>>>>>>>>>>>>>>>>>>>>>>" + token);
         chain.doFilter(request, response);  // Filter를 FilterChain에 등록
     }
 }
