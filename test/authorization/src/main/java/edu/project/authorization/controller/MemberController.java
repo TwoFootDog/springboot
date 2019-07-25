@@ -1,9 +1,6 @@
 package edu.project.authorization.controller;
 
-import edu.project.authorization.domain.AuthenticationRequestVO;
-import edu.project.authorization.domain.AuthenticationTokenVO;
-import edu.project.authorization.domain.MemberRoleVO;
-import edu.project.authorization.domain.MemberVO;
+import edu.project.authorization.domain.*;
 import edu.project.authorization.repository.MemberRepository;
 import edu.project.authorization.service.UserAuthService;
 import edu.project.authorization.util.JwtTokenProvider;
@@ -13,8 +10,10 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Controller;
@@ -45,6 +44,8 @@ public class MemberController {
     /* 로그인 API */
     @PostMapping(value = "/signin")
     public AuthenticationTokenVO signIn(@RequestBody AuthenticationRequestVO authenticationRequestVO, HttpSession httpSession) {
+        Authentication authentication1 = SecurityContextHolder.getContext().getAuthentication();
+
 
         String userId = authenticationRequestVO.getUserId();
         String userPasswd = authenticationRequestVO.getUserPasswd();
@@ -93,10 +94,19 @@ public class MemberController {
         return memberRepository.save(memberVO);
     }
 
-    /* token이 유효한지 체크하는 api. 진짜 체크는 JwtAuthenticationFilter에서 수행하고 해당 api는 URL만 제공한다 */
-    @GetMapping(value = "/tokenValidChk")
-    public Boolean tokenValidChk() {
-        log.info("tokenvalidchk>>>>>>>>>>>>>>>>");
-        return true;
+
+    /* user의 정보를 가져오는 API. 입력값은 현재 설정된 user의 principal 정보를 가져옴 */
+    @GetMapping(value = "/getUserInfo")
+    public GetUserInfoResVO getUserInfo(@AuthenticationPrincipal UserDetails userDetails) {
+        MemberVO memberVO = memberRepository.findByUserId(userDetails.getUsername());   // 현재 principal에 셋팅된 userId로 user정보 조회
+
+        GetUserInfoResVO response = new GetUserInfoResVO();
+        response.setUserId(userDetails.getUsername());
+        response.setAuthorities(userDetails.getAuthorities());
+        response.setUserEmaill(memberVO.getUserEmail());
+        response.setUserFirstName(memberVO.getUserFirstName());
+        response.setUserLastName(memberVO.getUserLastName());
+
+        return response;
     }
 }

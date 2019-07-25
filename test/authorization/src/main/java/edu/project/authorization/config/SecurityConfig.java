@@ -46,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                    .antMatchers("/", "/signup", "/signin", "/tokenValidChk").permitAll() // 모든 권한에 접근 허용
+                    .antMatchers("/", "/signup", "/signin").permitAll() // 모든 권한에 접근 허용
                     .antMatchers("/**").hasRole("USER")     // USER 권한에 접근 허용
                     .antMatchers("/**").hasRole("ADMIN")    // ADMIN 권한에 접근 허용
                     .antMatchers("/admin/**").hasRole("ADMIN")
@@ -55,6 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
 //                .and().logout();
+        http.cors();
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);    // Jwt 를 이용한 인증이므로 세션은 생성 안함
     }
