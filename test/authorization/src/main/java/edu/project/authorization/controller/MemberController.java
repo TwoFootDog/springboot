@@ -46,7 +46,6 @@ public class MemberController {
     public AuthenticationTokenVO signIn(@RequestBody AuthenticationRequestVO authenticationRequestVO, HttpSession httpSession) {
         Authentication authentication1 = SecurityContextHolder.getContext().getAuthentication();
 
-
         String userId = authenticationRequestVO.getUserId();
         String userPasswd = authenticationRequestVO.getUserPasswd();
         log.info("controller login>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>signin" + userId + userPasswd);
@@ -91,6 +90,17 @@ public class MemberController {
         memberVO.setUserFirstName(authenticationRequestVO.getUserFirstName());
         memberVO.setUserLastName(authenticationRequestVO.getUserLastName());
         memberVO.setMemberRole(Arrays.asList(memberRoleVO));
+//        try {
+//            MemberVO memberVO1 = memberRepository.save(memberVO);
+//
+//            UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(memberVO.getUserId(), memberVO.getUserPasswd());
+//            Authentication authentication = authenticationManager.authenticate(token);
+//            SecurityContextHolder.getContext().setAuthentication(authentication);
+//
+//        } catch (Exception e) {
+//            log.info("Signup Fail");
+//        }
+
         return memberRepository.save(memberVO);
     }
 
