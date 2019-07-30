@@ -10,6 +10,7 @@ import java.util.Collection;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GetUserInfoResVO {
+    private CustomHeaderResVO header;
     private String userId;
     private String userEmaill;
     private String userFirstName;

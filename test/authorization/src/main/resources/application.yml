@@ -24,3 +24,9 @@ spring:
     username: project
     password: vmfhwprxm12#
     driver-class-name: org.mariadb.jdbc.Driver
+
+---
+
+signInFailed:
+  code: "-1001"
+  msg: "계정이 존재하지 않거나 비밀번호가 정확하지 않습니다"

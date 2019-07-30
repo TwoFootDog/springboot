@@ -9,20 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Arrays;
-import java.util.Iterator;
 
 
 @CrossOrigin("*")
@@ -43,11 +38,11 @@ public class MemberController {
 
     /* 로그인 API */
     @PostMapping(value = "/signin")
-    public AuthenticationTokenVO signIn(@RequestBody AuthenticationRequestVO authenticationRequestVO, HttpSession httpSession) {
+    public AuthenticationResVO signIn(@RequestBody AuthenticationReqVO authenticationReqVO, HttpSession httpSession) {
         Authentication authentication1 = SecurityContextHolder.getContext().getAuthentication();
 
-        String userId = authenticationRequestVO.getUserId();
-        String userPasswd = authenticationRequestVO.getUserPasswd();
+        String userId = authenticationReqVO.getUserId();
+        String userPasswd = authenticationReqVO.getUserPasswd();
         log.info("controller login>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>signin" + userId + userPasswd);
 
         /* token 생성 후 token을 파라미터로 인증 진행.  Spring Security에서 설정한 인증 적용됨 */
@@ -65,7 +60,8 @@ public class MemberController {
 
         /* Jwt 생성 */
         String jwt = jwtTokenProvider.generateToken(authentication);
-        return new AuthenticationTokenVO(authentication.getName(), authentication.getAuthorities(), jwt);
+        CustomHeaderResVO header = new CustomHeaderResVO(true, "0000", "Success");
+        return new AuthenticationResVO(header, authentication.getName(), authentication.getAuthorities(), jwt);
     }
 
     /* 로그아웃 API */
@@ -77,18 +73,18 @@ public class MemberController {
 
     /* 회원가입 API */
     @PostMapping(value = "/signup")
-    public MemberVO signUp(@RequestBody AuthenticationRequestVO authenticationRequestVO, HttpSession httpSession) {
+    public MemberVO signUp(@RequestBody AuthenticationReqVO authenticationReqVO, HttpSession httpSession) {
 
         MemberRoleVO memberRoleVO = new MemberRoleVO();
         memberRoleVO.setRoleName("USER");
 
         MemberVO memberVO = new MemberVO();
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        memberVO.setUserPasswd(passwordEncoder.encode(authenticationRequestVO.getUserPasswd()));
-        memberVO.setUserId(authenticationRequestVO.getUserId());
-        memberVO.setUserEmail(authenticationRequestVO.getUserEmail());
-        memberVO.setUserFirstName(authenticationRequestVO.getUserFirstName());
-        memberVO.setUserLastName(authenticationRequestVO.getUserLastName());
+        memberVO.setUserPasswd(passwordEncoder.encode(authenticationReqVO.getUserPasswd()));
+        memberVO.setUserId(authenticationReqVO.getUserId());
+        memberVO.setUserEmail(authenticationReqVO.getUserEmail());
+        memberVO.setUserFirstName(authenticationReqVO.getUserFirstName());
+        memberVO.setUserLastName(authenticationReqVO.getUserLastName());
         memberVO.setMemberRole(Arrays.asList(memberRoleVO));
 //        try {
 //            MemberVO memberVO1 = memberRepository.save(memberVO);
