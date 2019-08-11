@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" addBOMForNewFiles="with NO BOM">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-account" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-delivery" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-order" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-payment" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-product" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-shared" charset="UTF-8" />
+  </component>
+</project>

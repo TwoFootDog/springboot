@@ -14,7 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
-@Import(SpringDataRestConfiguration.class)
+//@Import(SpringDataRestConfiguration.class)
 public class SwaggerConfig {
 	@Bean
     public Docket api() {
@@ -24,10 +24,10 @@ public class SwaggerConfig {
                 .paths(PathSelectors.any())
                 .build().apiInfo(getApiInfo());
     }
-	
+
 	public ApiInfo getApiInfo() {
 		return new ApiInfoBuilder()
-				.title("Account Service")
+				.title("Evaluation Service")
 				.description("This pages documents Account Restful Web Service endpoints")
 				.version("0.1")
 				.build();
