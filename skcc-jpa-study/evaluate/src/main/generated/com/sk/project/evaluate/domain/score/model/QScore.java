@@ -33,9 +33,9 @@ public class QScore extends EntityPathBase<Score> {
 
     public final DateTimePath<java.util.Date> registDate = createDateTime("registDate", java.util.Date.class);
 
-    public final NumberPath<Long> restaurantId = createNumber("restaurantId", Long.class);
-
     public final NumberPath<Integer> starCount = createNumber("starCount", Integer.class);
+
+    public final NumberPath<Long> storeId = createNumber("storeId", Long.class);
 
     public QScore(String variable) {
         this(Score.class, forVariable(variable), INITS);
