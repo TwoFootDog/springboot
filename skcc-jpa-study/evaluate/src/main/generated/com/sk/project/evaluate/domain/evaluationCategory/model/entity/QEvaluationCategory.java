@@ -1,4 +1,4 @@
-package com.sk.project.evaluate.domain.evaluationCategory.model;
+package com.sk.project.evaluate.domain.evaluationCategory.model.entity;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -15,7 +15,7 @@ import com.querydsl.core.types.Path;
 @Generated("com.querydsl.codegen.EntitySerializer")
 public class QEvaluationCategory extends EntityPathBase<EvaluationCategory> {
 
-    private static final long serialVersionUID = -2024936736L;
+    private static final long serialVersionUID = 2101046079L;
 
     public static final QEvaluationCategory evaluationCategory = new QEvaluationCategory("evaluationCategory");
 

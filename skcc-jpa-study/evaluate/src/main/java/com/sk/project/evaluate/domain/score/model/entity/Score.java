@@ -1,8 +1,8 @@
-package com.sk.project.evaluate.domain.score.model;
+package com.sk.project.evaluate.domain.score.model.entity;
 
 import com.sk.project.evaluate.domain.base.AbstractEntity;
 import com.sk.project.evaluate.domain.base.AggregateRoot;
-import com.sk.project.evaluate.domain.evaluationCategory.model.EvaluationCategory;
+import com.sk.project.evaluate.domain.evaluationCategory.model.entity.EvaluationCategory;
 import lombok.*;
 
 import javax.persistence.*;
@@ -10,10 +10,8 @@ import java.util.Date;
 
 @Entity
 @EqualsAndHashCode(callSuper = true)
-//@Data
+@Data
 @NoArgsConstructor
-@ToString
-@Getter
 public class Score extends AbstractEntity implements AggregateRoot {
 
     @Column(nullable = false)
@@ -29,10 +27,11 @@ public class Score extends AbstractEntity implements AggregateRoot {
 
     private Date registDate;
 
-    public Score(Long customerId, Long storeId, EvaluationCategory evaluationCategory, Integer starCount) {
+    public Score(Long customerId, Long storeId, EvaluationCategory evaluationCategory, Integer starCount, Date registDate) {
         this.customerId = customerId;
         this.storeId = storeId;
         this.evaluationCategory = evaluationCategory;
         this.starCount = starCount;
+        this.registDate = registDate;
     }
 }

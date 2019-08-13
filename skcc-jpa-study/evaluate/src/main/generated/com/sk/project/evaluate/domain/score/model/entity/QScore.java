@@ -1,4 +1,4 @@
-package com.sk.project.evaluate.domain.score.model;
+package com.sk.project.evaluate.domain.score.model.entity;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -16,7 +16,7 @@ import com.querydsl.core.types.dsl.PathInits;
 @Generated("com.querydsl.codegen.EntitySerializer")
 public class QScore extends EntityPathBase<Score> {
 
-    private static final long serialVersionUID = -1108156226L;
+    private static final long serialVersionUID = 399239387L;
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
@@ -26,7 +26,7 @@ public class QScore extends EntityPathBase<Score> {
 
     public final NumberPath<Long> customerId = createNumber("customerId", Long.class);
 
-    public final com.sk.project.evaluate.domain.evaluationCategory.model.QEvaluationCategory evaluationCategory;
+    public final com.sk.project.evaluate.domain.evaluationCategory.model.entity.QEvaluationCategory evaluationCategory;
 
     //inherited
     public final NumberPath<Long> id = _super.id;
@@ -55,7 +55,7 @@ public class QScore extends EntityPathBase<Score> {
 
     public QScore(Class<? extends Score> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.evaluationCategory = inits.isInitialized("evaluationCategory") ? new com.sk.project.evaluate.domain.evaluationCategory.model.QEvaluationCategory(forProperty("evaluationCategory")) : null;
+        this.evaluationCategory = inits.isInitialized("evaluationCategory") ? new com.sk.project.evaluate.domain.evaluationCategory.model.entity.QEvaluationCategory(forProperty("evaluationCategory")) : null;
     }
 
 }

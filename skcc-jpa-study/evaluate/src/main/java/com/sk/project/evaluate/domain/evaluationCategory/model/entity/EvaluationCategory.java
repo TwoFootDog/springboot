@@ -1,4 +1,4 @@
-package com.sk.project.evaluate.domain.evaluationCategory.model;
+package com.sk.project.evaluate.domain.evaluationCategory.model.entity;
 
 import com.sk.project.evaluate.domain.base.AbstractEntity;
 import com.sk.project.evaluate.domain.base.AggregateRoot;
@@ -15,4 +15,8 @@ public class EvaluationCategory extends AbstractEntity implements AggregateRoot 
     private String itemName;
 
     private Date registDate;
+
+    public EvaluationCategory(String itemName) {
+        this.itemName = itemName;
+    }
 }
