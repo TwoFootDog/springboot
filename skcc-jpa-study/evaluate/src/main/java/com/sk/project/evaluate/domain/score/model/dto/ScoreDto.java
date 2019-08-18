@@ -14,7 +14,7 @@ public class ScoreDto {
 
     private Long storeId;
 
-    private EvaluationCategoryDto evaluationCategoryDto;
+    private Long evaluationCategoryId;
 
     private Integer starCount;
 

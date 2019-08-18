@@ -8,5 +8,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EvaluationCategoryDto {
-    private String itemName;
+    private String categoryName;
 }

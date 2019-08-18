@@ -1,4 +1,4 @@
-package com.sk.project.evaluate.domain.review.model;
+package com.sk.project.evaluate.domain.review.model.entity;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -15,7 +15,7 @@ import com.querydsl.core.types.Path;
 @Generated("com.querydsl.codegen.EntitySerializer")
 public class QReview extends EntityPathBase<Review> {
 
-    private static final long serialVersionUID = 2125990944L;
+    private static final long serialVersionUID = -292660677L;
 
     public static final QReview review = new QReview("review");
 
@@ -30,7 +30,9 @@ public class QReview extends EntityPathBase<Review> {
 
     public final DateTimePath<java.util.Date> registDate = createDateTime("registDate", java.util.Date.class);
 
-    public final NumberPath<Long> restaurantId = createNumber("restaurantId", Long.class);
+    public final NumberPath<Long> storeId = createNumber("storeId", Long.class);
+
+    public final DateTimePath<java.util.Date> updateDate = createDateTime("updateDate", java.util.Date.class);
 
     public QReview(String variable) {
         super(Review.class, forVariable(variable));

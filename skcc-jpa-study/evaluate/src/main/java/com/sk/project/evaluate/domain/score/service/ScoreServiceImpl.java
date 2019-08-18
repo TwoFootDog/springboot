@@ -4,6 +4,7 @@ import com.sk.project.evaluate.domain.evaluationCategory.model.entity.Evaluation
 import com.sk.project.evaluate.domain.score.model.dto.ScoreDto;
 import com.sk.project.evaluate.domain.score.model.entity.Score;
 import com.sk.project.evaluate.domain.score.repository.ScoreRepository;
+import com.sk.project.evaluate.utils.exception.ServiceException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service("scoreService")
@@ -25,8 +27,14 @@ public class ScoreServiceImpl implements ScoreService{
 
     @Override
     @Transactional(readOnly = true)
-    public Score findScoreByCustomerIdAndStoreId(Long customerId, Long storeId) {
+    public List<Score> findScoreByCustomerIdAndStoreId(Long customerId, Long storeId) {
         return scoreRepository.findScoreByCustomerIdAndStoreId(customerId, storeId);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Score> findScoresByStoreId(Long storeId) {
+        return scoreRepository.findScoresByStoreId(storeId);
     }
 
     @Override
@@ -35,25 +43,38 @@ public class ScoreServiceImpl implements ScoreService{
         Score score = new Score(
                 scoreDto.getCustomerId(),
                 scoreDto.getStoreId(),
-                new EvaluationCategory(scoreDto.getEvaluationCategoryDto().getItemName()),
+                new EvaluationCategory(scoreDto.getEvaluationCategoryId(), new Date(), new Date()),
                 scoreDto.getStarCount(),
+                new Date(),
                 new Date());
-        return scoreRepository.save(score);
+        Score score1;
+        try {
+            score1 = scoreRepository.save(score);
+        } catch (RuntimeException e) {
+            throw new ServiceException("데이터를 등록할 수 없습니다");
+        }
+        return score1;
     }
 
     @Override
     @Transactional
-    public Score updateScore(Long scoreId, ScoreDto newScoreDto) {
+    public Score updateScore(Long scoreId, ScoreDto scoreDto) {
         Optional<Score> oldScore = scoreRepository.findById(scoreId);
         if (oldScore.isPresent()) { // score가 존재하는 경우
                     Score newScore = new Score(
-                    newScoreDto.getCustomerId(),
-                    newScoreDto.getStoreId(),
-                    new EvaluationCategory(newScoreDto.getEvaluationCategoryDto().getItemName()),
-                    newScoreDto.getStarCount(),
-                    oldScore.get().getRegistDate());
-            BeanUtils.copyProperties(newScore, oldScore, "id");
-            return scoreRepository.save(newScore);
+                            null,
+                            null,
+                            null,
+                            scoreDto.getStarCount(),
+                            null,
+                            new Date());
+            BeanUtils.copyProperties(newScore, oldScore.get(),
+                    "id", "customerId", "storeId", "evaluationCategory", "registDate");
+            try {
+                return scoreRepository.save(oldScore.get());
+            } catch (Exception e) {
+                throw new ServiceException("데이터를 등록할 수 없습니다");
+            }
         } else {
             return null;
         }

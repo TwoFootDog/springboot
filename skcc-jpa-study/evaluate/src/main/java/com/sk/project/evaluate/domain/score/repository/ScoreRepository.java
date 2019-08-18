@@ -5,7 +5,10 @@ import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
+import java.util.List;
+
 @RepositoryRestResource
 public interface ScoreRepository extends PagingAndSortingRepository<Score, Long>, QuerydslPredicateExecutor<Score> {
-    Score findScoreByCustomerIdAndStoreId(Long customerId, Long storeId);
+    List<Score> findScoreByCustomerIdAndStoreId(Long customerId, Long storeId);
+    List<Score> findScoresByStoreId(Long storeId);
 }

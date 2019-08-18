@@ -9,29 +9,37 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"customer_id", "store_id", "evaluation_category_id"})})
 @EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 public class Score extends AbstractEntity implements AggregateRoot {
-
-    @Column(nullable = false)
+    @Column(name = "customer_id", nullable = false)
     private Long customerId;
 
-    @Column(nullable = false)
+    @Column(name = "store_id", nullable = false)
     private Long storeId;
 
-    @OneToOne(cascade= CascadeType.ALL)
+    @OneToOne(cascade= CascadeType.MERGE)
     private EvaluationCategory evaluationCategory;
 
     private Integer starCount;
 
     private Date registDate;
 
-    public Score(Long customerId, Long storeId, EvaluationCategory evaluationCategory, Integer starCount, Date registDate) {
+    private Date updateDate;
+
+    public Score(Long customerId,
+                 Long storeId,
+                 EvaluationCategory evaluationCategory,
+                 Integer starCount,
+                 Date registDate,
+                 Date updateDate) {
         this.customerId = customerId;
         this.storeId = storeId;
         this.evaluationCategory = evaluationCategory;
         this.starCount = starCount;
         this.registDate = registDate;
+        this.updateDate = updateDate;
     }
 }

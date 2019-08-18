@@ -28,6 +28,8 @@ public class QEvaluationCategory extends EntityPathBase<EvaluationCategory> {
 
     public final DateTimePath<java.util.Date> registDate = createDateTime("registDate", java.util.Date.class);
 
+    public final DateTimePath<java.util.Date> updateDate = createDateTime("updateDate", java.util.Date.class);
+
     public QEvaluationCategory(String variable) {
         super(EvaluationCategory.class, forVariable(variable));
     }
