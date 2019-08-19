@@ -21,10 +21,10 @@ public class QEvaluationCategory extends EntityPathBase<EvaluationCategory> {
 
     public final com.sk.project.evaluate.domain.base.QAbstractEntity _super = new com.sk.project.evaluate.domain.base.QAbstractEntity(this);
 
+    public final StringPath categoryName = createString("categoryName");
+
     //inherited
     public final NumberPath<Long> id = _super.id;
-
-    public final StringPath itemName = createString("itemName");
 
     public final DateTimePath<java.util.Date> registDate = createDateTime("registDate", java.util.Date.class);
 

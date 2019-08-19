@@ -1,10 +1,13 @@
-server:
-  port: 9999
-
 spring:
   profiles:
-    active:
-      - default
+    active: local
+
+---
+
+server:
+  port: 9999
+spring:
+  profiles: local
 
   jackson:
     serialization:
@@ -15,6 +18,29 @@ spring:
     driver-class-name: org.mariadb.jdbc.Driver
     username: skccproject
     password: skccproject
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+
+---
+
+server:
+  port: 11000
+
+spring:
+  profiles: dev
+
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+
+  datasource:
+    url: jdbc:mariadb://10.178.230.98/hostpot_evaluation
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: evaluationuser
+    password: evaluationuser
 
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
