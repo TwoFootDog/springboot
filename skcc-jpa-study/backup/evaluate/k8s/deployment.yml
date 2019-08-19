@@ -1,0 +1,23 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: sample-gs-spring-boot-docker # deployment name -> kubectl get deployment
+  labels:
+    app: sample-gs-spring-boot-docker
+spec:
+  replicas: 1 # number of pod
+  selector:
+    matchLabels:
+      app: sample-gs-spring-boot-docker
+  template:
+    metadata:
+      labels:
+        app: sample-gs-spring-boot-docker
+    spec:
+      containers:
+        - name: sample-gs-spring-boot-docker
+          image: dep-dev-registry.cloudzcp.io/sample/gs-spring-boot-docker:32
+      imagePullSecrets:
+        - name: jonas-secret
+#        ports:
+#        - containerPort: 8080

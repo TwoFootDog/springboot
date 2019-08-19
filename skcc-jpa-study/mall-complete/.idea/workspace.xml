@@ -2,13 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8389cb0d-6725-4a80-8ce1-5f9a6ee79309" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../evaluate/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../evaluate/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../evaluate/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../evaluate/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../evaluate/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/../evaluate/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../evaluate/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/../evaluate/gradlew.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../evaluate/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../evaluate/src/main/resources/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../evaluate/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../evaluate/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../evaluate/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../evaluate/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../evaluate/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../evaluate/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../evaluate/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../evaluate/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../evaluate/src/main/generated/com/sk/project/evaluate/domain/base/QAbstractEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../evaluate/src/main/generated/com/sk/project/evaluate/domain/evaluationCategory/model/entity/QEvaluationCategory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../evaluate/src/main/generated/com/sk/project/evaluate/domain/review/model/entity/QReview.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../evaluate/src/main/generated/com/sk/project/evaluate/domain/score/model/entity/QScore.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../evaluate/src/main/java/com/sk/project/evaluate/application/RepositoryRestConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../evaluate/src/main/java/com/sk/project/evaluate/application/RepositoryRestConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../evaluate/src/main/java/com/sk/project/evaluate/application/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../evaluate/src/main/java/com/sk/project/evaluate/application/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../evaluate/src/main/java/com/sk/project/evaluate/domain/evaluationCategory/model/entity/EvaluationCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../evaluate/src/main/java/com/sk/project/evaluate/domain/evaluationCategory/model/entity/EvaluationCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../evaluate/src/main/java/com/sk/project/evaluate/domain/evaluationCategory/repository/EvaluationCategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../evaluate/src/main/java/com/sk/project/evaluate/domain/evaluationCategory/repository/EvaluationCategoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../evaluate/src/main/java/com/sk/project/evaluate/domain/evaluationCategory/service/EvaluationCategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../evaluate/src/main/java/com/sk/project/evaluate/domain/evaluationCategory/service/EvaluationCategoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../evaluate/src/main/java/com/sk/project/evaluate/domain/review/model/dto/ReviewDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../evaluate/src/main/java/com/sk/project/evaluate/domain/review/model/dto/ReviewDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../evaluate/src/main/java/com/sk/project/evaluate/domain/score/model/dto/ScoreDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../evaluate/src/main/java/com/sk/project/evaluate/domain/score/model/dto/ScoreDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../evaluate/src/main/java/com/sk/project/evaluate/domain/score/model/entity/Score.java" beforeDir="false" afterPath="$PROJECT_DIR$/../evaluate/src/main/java/com/sk/project/evaluate/domain/score/model/entity/Score.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../evaluate/src/main/java/com/sk/project/evaluate/domain/score/service/ScoreServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../evaluate/src/main/java/com/sk/project/evaluate/domain/score/service/ScoreServiceImpl.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/mall-shared/target/" />
@@ -26,15 +39,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.project">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mall-account/src/main/resources/application.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="581">
-              <caret line="31" column="26" lean-forward="true" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
+              <caret line="31" column="26" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-584">
+              <caret line="67" column="21" selection-start-line="67" selection-start-column="21" selection-end-line="67" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -101,7 +118,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mall-account/src/main/java/com/sk/sample/mall/account/application/sp/web/AccountRestController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="621">
+            <state relative-caret-position="759">
               <caret line="49" selection-start-line="49" selection-end-line="49" />
             </state>
           </provider>
@@ -267,17 +284,17 @@
       <workItem from="1565709713581" duration="1678000" />
       <workItem from="1566197358744" duration="68000" />
       <workItem from="1566197587152" duration="253000" />
+      <workItem from="1566226419226" duration="278000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11262000" />
+    <option name="totallyTimeSpent" value="11540000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26613334" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26918977" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -304,7 +321,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" visible="true" weight="0.1552" />
+      <window_info anchor="right" id="Maven" order="3" visible="true" weight="0.15511727" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="right" id="Database" order="6" />
@@ -418,6 +435,12 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.project">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mall-account/src/main/resources/application-dev.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/mall-shared/src/main/java/com/sk/sample/mall/shared/base/AbstractEntity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
@@ -462,21 +485,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mall-account/src/main/java/com/sk/sample/mall/account/application/sp/web/AccountRestController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
+        <state relative-caret-position="759">
           <caret line="49" selection-start-line="49" selection-end-line="49" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.project">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mall-account/src/main/resources/application-dev.yml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/mall-account/src/main/resources/application.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="581">
-          <caret line="31" column="26" lean-forward="true" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
+          <caret line="31" column="26" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-584">
+          <caret line="67" column="21" selection-start-line="67" selection-start-column="21" selection-end-line="67" selection-end-column="39" />
         </state>
       </provider>
     </entry>

@@ -2,7 +2,6 @@ package com.sk.project.evaluate.domain.evaluationCategory.model.entity;
 
 import com.sk.project.evaluate.domain.base.AbstractEntity;
 import com.sk.project.evaluate.domain.base.AggregateRoot;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;

@@ -3,7 +3,9 @@ package com.sk.project.evaluate.domain.score.model.entity;
 import com.sk.project.evaluate.domain.base.AbstractEntity;
 import com.sk.project.evaluate.domain.base.AggregateRoot;
 import com.sk.project.evaluate.domain.evaluationCategory.model.entity.EvaluationCategory;
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;

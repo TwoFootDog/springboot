@@ -1,4 +1,4 @@
-//package com.sk.project.evaluate.application;
+package com.sk.project.evaluate.application;//package com.sk.project.evaluate.application;
 //
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.context.annotation.Configuration;

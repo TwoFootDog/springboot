@@ -12,7 +12,7 @@ import java.util.*;
 
 @Service("evaluationCategoryService")
 @Slf4j
-public class EvaluationCategoryServiceImpl implements EvaluationCategoryService{
+public class EvaluationCategoryServiceImpl implements EvaluationCategoryService {
 
     private final EvaluationCategoryRepository evaluationCategoryRepository;
 
