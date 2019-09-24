@@ -1,0 +1,23 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: hotspot-evaluation # deployment name -> kubectl get deployment
+  labels:
+    app: hotspot-evaluation
+spec:
+  replicas: 1 # number of pod
+  selector:
+    matchLabels:
+      app: hotspot-evaluation
+  template:
+    metadata:
+      labels:
+        app: hotspot-evaluation
+    spec:
+      containers:
+        - name: hotspot-evaluation
+          image: dep-dev-registry.cloudzcp.io/hotspot/hotspot-evaluation:1
+      imagePullSecrets:
+        - name: jonas-secret
+#        ports:
+#        - containerPort: 8080
