@@ -9,5 +9,5 @@ import java.util.List;
 
 @RepositoryRestResource
 public interface EvaluationCategoryRepository extends PagingAndSortingRepository<EvaluationCategory, Long>,
-                                                        QuerydslPredicateExecutor<EvaluationCategory> {
+        QuerydslPredicateExecutor<EvaluationCategory> {
 }

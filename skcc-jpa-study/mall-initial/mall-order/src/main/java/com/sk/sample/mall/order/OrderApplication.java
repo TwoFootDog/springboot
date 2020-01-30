@@ -16,20 +16,20 @@ import com.sk.sample.mall.shared.domain.Address;
 @EnableFeignClients
 public class OrderApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(OrderApplication.class, args);
-	}
-	
-	@Bean
-	public CommandLineRunner test(OrderRepository orderRepository, OrderLogic orderLogic) {	
-		return (args) -> {
-			Order order = new Order(1L, 3L, 2);
-			orderRepository.save(order); 
-			order.setCreditCard(new CreditCard("1234", "08/01"));
+    public static void main(String[] args) {
+        SpringApplication.run(OrderApplication.class, args);
+    }
+
+    @Bean
+    public CommandLineRunner test(OrderRepository orderRepository, OrderLogic orderLogic) {
+        return (args) -> {
+            Order order = new Order(1L, 3L, 2);
+            orderRepository.save(order);
+            order.setCreditCard(new CreditCard("1234", "08/01"));
 //			order.setShippingAddress(new Address(12345, "경기도 성남시"));
-			orderRepository.save(order);
-			
-			orderLogic.purchase(1L);
+            orderRepository.save(order);
+
+            orderLogic.purchase(1L);
 //			insertProduct(productRepository);
 //			
 //			executeExample1(productRepository);
@@ -39,6 +39,6 @@ public class OrderApplication {
 //			executeExample5(productRepository);
 //			executeExample6(productRepository);
 //			executeExample7(productRepository);
-		};
-	}
+        };
+    }
 }

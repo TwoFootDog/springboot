@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class PurchaseCompleted implements Serializable {
-	private Long id; 
-	private Order order;
+    private Long id;
+    private Order order;
 }

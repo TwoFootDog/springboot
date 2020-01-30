@@ -14,61 +14,61 @@ import com.sk.sample.mall.account.domain.repository.AccountRepository;
 
 @Service("accountLogic")
 public class AccountLogic implements AccountService {
-	@Autowired
-	private AccountRepository accountRepository;
+    @Autowired
+    private AccountRepository accountRepository;
 
-	@Override
-	@Transactional(readOnly=true)
-	public Account findById(Long id) {
-		return accountRepository.findOne(id);
-	}
+    @Override
+    @Transactional(readOnly = true)
+    public Account findById(Long id) {
+        return accountRepository.findOne(id);
+    }
 
-	@Override
-	@Transactional(readOnly=true)
-	public List<Account> findByNameLike(String name) {
-		return accountRepository.findByNameLike(name);
-	}
+    @Override
+    @Transactional(readOnly = true)
+    public List<Account> findByNameLike(String name) {
+        return accountRepository.findByNameLike(name);
+    }
 
-	@Override
-	@Transactional(readOnly=true)
-	public Account findByEmail(String email) {
-		return accountRepository.findByEmail(email);
-	}
-	
-	@Override
-	@Transactional(readOnly=true)
-	public List<Account> findAll() {
-		return accountRepository.findAll();
-	}
+    @Override
+    @Transactional(readOnly = true)
+    public Account findByEmail(String email) {
+        return accountRepository.findByEmail(email);
+    }
 
-	
-	@Override
-	@Transactional(readOnly=true)
-	public Page<Account> findAll(Pageable pageable) {
-		return accountRepository.findAll(pageable);
-	}
+    @Override
+    @Transactional(readOnly = true)
+    public List<Account> findAll() {
+        return accountRepository.findAll();
+    }
 
-	@Override
-	@Transactional
-	public Account register(Account account) {
-		return accountRepository.save(account);
-	}
 
-	@Override
-	@Transactional
-	public Account update(Long id, Account newAccount) {
-		Account oldAccount = accountRepository.findOne(id);
-		if(oldAccount != null) {
-			BeanUtils.copyProperties(newAccount,  oldAccount, "id");
-			return accountRepository.save(oldAccount);
-		} else {
-			return null;
-		}
-	}
+    @Override
+    @Transactional(readOnly = true)
+    public Page<Account> findAll(Pageable pageable) {
+        return accountRepository.findAll(pageable);
+    }
 
-	@Override
-	@Transactional
-	public void delete(Long id) {
-		accountRepository.delete(id);
-	}
+    @Override
+    @Transactional
+    public Account register(Account account) {
+        return accountRepository.save(account);
+    }
+
+    @Override
+    @Transactional
+    public Account update(Long id, Account newAccount) {
+        Account oldAccount = accountRepository.findOne(id);
+        if (oldAccount != null) {
+            BeanUtils.copyProperties(newAccount, oldAccount, "id");
+            return accountRepository.save(oldAccount);
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    @Transactional
+    public void delete(Long id) {
+        accountRepository.delete(id);
+    }
 }

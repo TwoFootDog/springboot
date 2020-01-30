@@ -8,7 +8,7 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 @EnableFeignClients
 public class PaymentApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(PaymentApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(PaymentApplication.class, args);
+    }
 }

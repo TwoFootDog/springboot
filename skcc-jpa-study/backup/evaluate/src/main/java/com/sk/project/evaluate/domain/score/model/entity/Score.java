@@ -20,7 +20,7 @@ public class Score extends AbstractEntity implements AggregateRoot {
     @Column(name = "store_id", nullable = false)
     private Long storeId;
 
-    @OneToOne(cascade= CascadeType.MERGE)
+    @OneToOne(cascade = CascadeType.MERGE)
     private EvaluationCategory evaluationCategory;
 
     private Integer starCount;

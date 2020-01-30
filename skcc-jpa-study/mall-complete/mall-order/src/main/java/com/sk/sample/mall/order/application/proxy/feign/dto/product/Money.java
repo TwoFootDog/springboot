@@ -5,10 +5,10 @@ import lombok.Data;
 
 @Data
 public class Money {
-	private Integer value;
-	
-	public Money(Integer value) {
-		this.value = value;
-	}
+    private Integer value;
+
+    public Money(Integer value) {
+        this.value = value;
+    }
 }
 

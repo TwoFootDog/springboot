@@ -12,13 +12,13 @@ import com.sk.sample.mall.payment.domain.service.PaymentService;
 @RestController
 @RequestMapping("/v1/payments")
 public class PaymentRestController implements PaymentService {
-	@Autowired
-	private PaymentService paymentService;
-	
-	@Override
-	@PostMapping
-	public Payment pay(@RequestBody Payment purchase) {
-		return paymentService.pay(purchase);
-	}
+    @Autowired
+    private PaymentService paymentService;
+
+    @Override
+    @PostMapping
+    public Payment pay(@RequestBody Payment purchase) {
+        return paymentService.pay(purchase);
+    }
 
 }

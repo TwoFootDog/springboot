@@ -11,10 +11,10 @@ import lombok.Data;
 @Data
 @Embeddable
 public class RestaurantDetail implements ValueObject {
-	private String information;
-	private String guidance;
-	private Date openTime;
-	private Date closeTime;
-	private String location;
+    private String information;
+    private String guidance;
+    private Date openTime;
+    private Date closeTime;
+    private String location;
 
 }

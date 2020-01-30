@@ -8,7 +8,10 @@ import java.util.List;
 
 public interface ScoreService {
     List<Score> findScoreByCustomerIdAndStoreId(Long customerId, Long storeId);
+
     List<Score> findScoresByStoreId(Long storeId);
+
     Score insertScore(ScoreDto scoreDto);
+
     Score updateScore(Long scoreId, ScoreDto scoreDto);
 }

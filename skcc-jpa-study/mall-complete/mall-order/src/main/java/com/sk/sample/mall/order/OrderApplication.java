@@ -17,25 +17,25 @@ import com.sk.sample.mall.shared.domain.Address;
 @EnableFeignClients
 public class OrderApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(OrderApplication.class, args);
-	}
-	
-	@Bean
-	public CommandLineRunner createSampleData(OrderRepository orderRepository, @Qualifier("orderLogic") OrderService orderService) {	
-		return (args) -> {
-			Order order = new Order(1L, 1L, 3);
-			orderRepository.save(order);
-			orderService.purchase(order.getId());
-		
-			order.setCreditCard(new CreditCard("12341234", "0921"));
-			orderRepository.save(order);
-			orderService.purchase(order.getId());
-			
-			order.setShippingAddress(new Address(12345, "부산"));
-			orderRepository.save(order);
-			orderService.purchase(order.getId());
-		};
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(OrderApplication.class, args);
+    }
+
+    @Bean
+    public CommandLineRunner createSampleData(OrderRepository orderRepository, @Qualifier("orderLogic") OrderService orderService) {
+        return (args) -> {
+            Order order = new Order(1L, 1L, 3);
+            orderRepository.save(order);
+            orderService.purchase(order.getId());
+
+            order.setCreditCard(new CreditCard("12341234", "0921"));
+            orderRepository.save(order);
+            orderService.purchase(order.getId());
+
+            order.setShippingAddress(new Address(12345, "부산"));
+            orderRepository.save(order);
+            orderService.purchase(order.getId());
+        };
+    }
 
 }

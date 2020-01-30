@@ -13,18 +13,20 @@ import com.sk.sample.mall.account.domain.model.Account;
 
 @RepositoryRestResource
 public interface AccountRepository extends PagingAndSortingRepository<Account, Long>,
-                                           QueryDslPredicateExecutor<Account> {
-	
-	Account findByEmail(@Param("email") String email);
-	List<Account> findByNameLike(@Param("name") String name);
-	List<Account> findAll();
-	
-	List<Account> findByAddressZipCode(@Param("zipCode") Integer zipCode);
-	
-	@Query("select a from Account a where a.address.homeAddress like %?1%")
-	List<Account> findByAddressHomeAddressLike(@Param("homeAddress") String homeAddress);
-	
+        QueryDslPredicateExecutor<Account> {
 
-	List<Account> findAll(Predicate predicate); 
-	
+    Account findByEmail(@Param("email") String email);
+
+    List<Account> findByNameLike(@Param("name") String name);
+
+    List<Account> findAll();
+
+    List<Account> findByAddressZipCode(@Param("zipCode") Integer zipCode);
+
+    @Query("select a from Account a where a.address.homeAddress like %?1%")
+    List<Account> findByAddressHomeAddressLike(@Param("homeAddress") String homeAddress);
+
+
+    List<Account> findAll(Predicate predicate);
+
 }

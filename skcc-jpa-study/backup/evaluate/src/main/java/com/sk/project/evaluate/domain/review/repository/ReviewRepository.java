@@ -10,6 +10,8 @@ import java.util.List;
 @RepositoryRestResource
 public interface ReviewRepository extends PagingAndSortingRepository<Review, Long>, QuerydslPredicateExecutor<Review> {
     Review findReviewByCustomerIdAndStoreId(Long customerId, Long storeId);
+
     List<Review> findReviewsByCustomerId(Long customerId);
+
     List<Review> findReviewsByStoreId(Long storeId);
 }

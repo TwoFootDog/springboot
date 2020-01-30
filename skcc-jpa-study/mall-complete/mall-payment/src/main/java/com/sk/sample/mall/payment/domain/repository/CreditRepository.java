@@ -8,7 +8,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import com.sk.sample.mall.payment.domain.model.Credit;
 
 @RepositoryRestResource
-public interface CreditRepository extends PagingAndSortingRepository<Credit, Long>, 
-	                                      QueryDslPredicateExecutor<Credit> {
-	Credit findByCreditCardCardNumber(@Param("cardNumber") String cardNumber);
+public interface CreditRepository extends PagingAndSortingRepository<Credit, Long>,
+        QueryDslPredicateExecutor<Credit> {
+    Credit findByCreditCardCardNumber(@Param("cardNumber") String cardNumber);
 }

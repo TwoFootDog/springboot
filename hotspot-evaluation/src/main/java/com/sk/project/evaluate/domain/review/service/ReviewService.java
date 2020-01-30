@@ -7,8 +7,12 @@ import java.util.List;
 
 public interface ReviewService {
     Review findReviewByCustomerIdAndStoreId(Long customerId, Long storeId);
+
     List<Review> findReviewsByCustomerId(Long customerId);
+
     List<Review> findReviewsByStoreId(Long storeId);
+
     Review insertReview(ReviewDto reviewDto);
+
     Review updateReview(Long reviewId, ReviewDto reviewDto);
 }

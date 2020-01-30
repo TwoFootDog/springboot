@@ -11,14 +11,14 @@ import com.sk.sample.mall.order.domain.service.OrderService;
 @RestController
 @RequestMapping("/v1/orders")
 public class OrderRestController implements OrderService {
-	
-	@Autowired
-	private OrderService orderService;
 
-	@Override
-	@PutMapping("{id}/purchased")
-	public void purchase(@PathVariable("id") Long orderId) {
-		// TODO Auto-generated method stub
-		orderService.purchase(orderId);	
-	}
+    @Autowired
+    private OrderService orderService;
+
+    @Override
+    @PutMapping("{id}/purchased")
+    public void purchase(@PathVariable("id") Long orderId) {
+        // TODO Auto-generated method stub
+        orderService.purchase(orderId);
+    }
 }

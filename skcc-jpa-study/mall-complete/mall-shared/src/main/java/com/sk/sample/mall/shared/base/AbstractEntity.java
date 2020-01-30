@@ -10,11 +10,11 @@ import lombok.EqualsAndHashCode;
 @MappedSuperclass
 @EqualsAndHashCode
 public abstract class AbstractEntity {
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	protected Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    protected Long id;
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 }

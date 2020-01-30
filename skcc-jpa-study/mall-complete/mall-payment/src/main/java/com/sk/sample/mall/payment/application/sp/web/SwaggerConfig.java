@@ -17,7 +17,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @Import(SpringDataRestConfiguration.class)
 public class SwaggerConfig {
-	@Bean
+    @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
@@ -25,12 +25,12 @@ public class SwaggerConfig {
                 .paths(PathSelectors.any())
                 .build().apiInfo(getApiInfo());
     }
-	
-	public ApiInfo getApiInfo() {
-		return new ApiInfoBuilder()
-				.title("Payment Service")
-				.description("This pages documents Purchase Restful Web Service endpoints")
-				.version("0.1")
-				.build();
-	}
+
+    public ApiInfo getApiInfo() {
+        return new ApiInfoBuilder()
+                .title("Payment Service")
+                .description("This pages documents Purchase Restful Web Service endpoints")
+                .version("0.1")
+                .build();
+    }
 }

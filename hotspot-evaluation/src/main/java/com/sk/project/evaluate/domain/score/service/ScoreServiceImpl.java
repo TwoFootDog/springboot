@@ -15,12 +15,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Service("scoreService")
-public class ScoreServiceImpl implements ScoreService{
+public class ScoreServiceImpl implements ScoreService {
 
     private final ScoreRepository scoreRepository;
 
     @Autowired
-    public ScoreServiceImpl (ScoreRepository scoreRepository) {
+    public ScoreServiceImpl(ScoreRepository scoreRepository) {
         this.scoreRepository = scoreRepository;
     }
 
@@ -60,13 +60,13 @@ public class ScoreServiceImpl implements ScoreService{
     public Score updateScore(Long scoreId, ScoreDto scoreDto) {
         Optional<Score> oldScore = scoreRepository.findById(scoreId);
         if (oldScore.isPresent()) { // score가 존재하는 경우
-                    Score newScore = new Score(
-                            null,
-                            null,
-                            null,
-                            scoreDto.getStarCount(),
-                            null,
-                            new Date());
+            Score newScore = new Score(
+                    null,
+                    null,
+                    null,
+                    scoreDto.getStarCount(),
+                    null,
+                    new Date());
             BeanUtils.copyProperties(newScore, oldScore.get(),
                     "id", "customerId", "storeId", "evaluationCategory", "registDate");
             try {

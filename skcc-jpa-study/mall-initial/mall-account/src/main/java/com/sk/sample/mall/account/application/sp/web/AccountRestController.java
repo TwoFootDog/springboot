@@ -21,56 +21,56 @@ import com.sk.sample.mall.account.domain.service.AccountService;
 @RestController
 @RequestMapping("/v1/accounts")
 public class AccountRestController implements AccountService {
-	@Autowired
-	private AccountService accountService;
+    @Autowired
+    private AccountService accountService;
 
-	@Override
-	@GetMapping
-	public List<Account> findAll() {
-		return accountService.findAll(); 
-	}
-	
-	@Override
-	@GetMapping("/{id}")
-	public Account findById(@PathVariable("id") Long id) {
-		return accountService.findById(id);
-	}
+    @Override
+    @GetMapping
+    public List<Account> findAll() {
+        return accountService.findAll();
+    }
 
-	@Override
-	@PostMapping
-	public Account register(@RequestBody Account account) {
-		return accountService.register(account);
-	}
+    @Override
+    @GetMapping("/{id}")
+    public Account findById(@PathVariable("id") Long id) {
+        return accountService.findById(id);
+    }
 
-	@Override
-	@PutMapping("/{id}")
-	public Account update(@PathVariable("id") Long id, @RequestBody Account account) {
-		return accountService.update(id, account);
-	}
+    @Override
+    @PostMapping
+    public Account register(@RequestBody Account account) {
+        return accountService.register(account);
+    }
 
-	@Override
-	@DeleteMapping("/{id}")
-	public void delete(@PathVariable("id") Long id) {
-		accountService.delete(id);
-	}
-	
-	@Override
-	@GetMapping("/search/name")
-	public List<Account> findByNameLike(@RequestParam("name") String name) {
-		return accountService.findByNameLike(name);
-	}
+    @Override
+    @PutMapping("/{id}")
+    public Account update(@PathVariable("id") Long id, @RequestBody Account account) {
+        return accountService.update(id, account);
+    }
 
-	@Override
-	@GetMapping("/search/email")
-	public Account findByEmail(@RequestParam("email") String email) {
-		return accountService.findByEmail(email);
-	}
+    @Override
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable("id") Long id) {
+        accountService.delete(id);
+    }
 
-	@Override
-	//@GetMapping
-	public Page<Account> findAll(Pageable pageable) {
-		return accountService.findAll(pageable); 
-	}
+    @Override
+    @GetMapping("/search/name")
+    public List<Account> findByNameLike(@RequestParam("name") String name) {
+        return accountService.findByNameLike(name);
+    }
+
+    @Override
+    @GetMapping("/search/email")
+    public Account findByEmail(@RequestParam("email") String email) {
+        return accountService.findByEmail(email);
+    }
+
+    @Override
+    //@GetMapping
+    public Page<Account> findAll(Pageable pageable) {
+        return accountService.findAll(pageable);
+    }
 
 
 }

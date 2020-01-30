@@ -1,0 +1,16 @@
+#server:
+#  port: 8080
+#
+#spring:
+#  #  profiles: dev
+#  profiles: local
+#  datasource:
+#    url: jdbc:mariadb://gajoa-test-db1.cklyw6tgbrhb.ap-northeast-2.rds.amazonaws.com:3306/user_db
+#    username: projectuser
+#    password: vmfhwprxmdbwj12#
+#    driver-class-name: org.mariadb.jdbc.Driver
+#
+#  jpa:
+#    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+#    hibernate:
+#      ddl-auto: update

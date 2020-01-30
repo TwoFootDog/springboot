@@ -11,14 +11,14 @@ import lombok.Data;
 @Builder
 @Embeddable
 public class Address implements ValueObject {
-	private Integer zipCode;
-	private String homeAddress;
-	
-	public Address() {
-	}
-	
-	public Address(Integer zipCode, String homeAddress) {
-		this.zipCode = zipCode;
-		this.homeAddress = homeAddress;
-	}
+    private Integer zipCode;
+    private String homeAddress;
+
+    public Address() {
+    }
+
+    public Address(Integer zipCode, String homeAddress) {
+        this.zipCode = zipCode;
+        this.homeAddress = homeAddress;
+    }
 }

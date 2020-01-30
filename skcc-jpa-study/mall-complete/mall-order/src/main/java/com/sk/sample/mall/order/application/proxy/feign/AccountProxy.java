@@ -16,38 +16,38 @@ import com.sk.sample.mall.order.application.proxy.feign.dto.account.Account;
 
 @Service
 public class AccountProxy {
-	@Autowired
-	private AccountClient accountClient;
-	
-	public Account findAccount(Long id) {
-		return accountClient.findAccount(id).getContent();
-	}
+    @Autowired
+    private AccountClient accountClient;
 
-	public Collection<Account> findAllAccounts() {
-		return accountClient.findAllAccounts().getContent();
-	}
-	
-	public Collection<Account> findAllAccounts(int size) {
-		return accountClient.findAllAccounts(size).getContent();
-	}
-	
-	public Account findAccounByName(String name) {
-		return accountClient.findAccount(name);
-	}
+    public Account findAccount(Long id) {
+        return accountClient.findAccount(id).getContent();
+    }
 
-	@FeignClient(name="accounts", url="http://localhost:11001", configuration=FeignClientConfiguration.class)
-	interface AccountClient {
-		@GetMapping("accounts/{id}")
-		Resource<Account> findAccount(@PathVariable("id") Long id);
-		
-		@GetMapping("accounts")
-		Resources<Account> findAllAccounts();
-		
-		@GetMapping("accounts")
-		Resources<Account> findAllAccounts(@RequestParam("size") int size);
-		
-		@GetMapping("accounts/search/findByName")
-		Account findAccount(@RequestParam(value="name", required=true) String name);
-	}
+    public Collection<Account> findAllAccounts() {
+        return accountClient.findAllAccounts().getContent();
+    }
+
+    public Collection<Account> findAllAccounts(int size) {
+        return accountClient.findAllAccounts(size).getContent();
+    }
+
+    public Account findAccounByName(String name) {
+        return accountClient.findAccount(name);
+    }
+
+    @FeignClient(name = "accounts", url = "http://localhost:11001", configuration = FeignClientConfiguration.class)
+    interface AccountClient {
+        @GetMapping("accounts/{id}")
+        Resource<Account> findAccount(@PathVariable("id") Long id);
+
+        @GetMapping("accounts")
+        Resources<Account> findAllAccounts();
+
+        @GetMapping("accounts")
+        Resources<Account> findAllAccounts(@RequestParam("size") int size);
+
+        @GetMapping("accounts/search/findByName")
+        Account findAccount(@RequestParam(value = "name", required = true) String name);
+    }
 }
 

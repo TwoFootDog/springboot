@@ -12,15 +12,15 @@ import lombok.Data;
 @Embeddable
 @Data
 public class ProductDescription implements ValueObject {
-	@Enumerated(EnumType.STRING)
-	private ColorType colorType;
-	
-	@Enumerated(EnumType.STRING)
-	private SizeType sizeType;
+    @Enumerated(EnumType.STRING)
+    private ColorType colorType;
 
-	public ProductDescription(ColorType colorType, SizeType sizeType) {
-		this.colorType = colorType;
-		this.sizeType = sizeType;
-	}
+    @Enumerated(EnumType.STRING)
+    private SizeType sizeType;
+
+    public ProductDescription(ColorType colorType, SizeType sizeType) {
+        this.colorType = colorType;
+        this.sizeType = sizeType;
+    }
 }
 

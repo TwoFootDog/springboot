@@ -7,15 +7,15 @@ import lombok.Data;
 
 @Data
 public class ProductDescription {
-	@Enumerated(EnumType.STRING)
-	private ColorType colorType;
-	
-	@Enumerated(EnumType.STRING)
-	private SizeType sizeType;
+    @Enumerated(EnumType.STRING)
+    private ColorType colorType;
 
-	public ProductDescription(ColorType colorType, SizeType sizeType) {
-		this.colorType = colorType;
-		this.sizeType = sizeType;
-	}
+    @Enumerated(EnumType.STRING)
+    private SizeType sizeType;
+
+    public ProductDescription(ColorType colorType, SizeType sizeType) {
+        this.colorType = colorType;
+        this.sizeType = sizeType;
+    }
 }
 

@@ -8,15 +8,19 @@ import org.springframework.data.domain.Pageable;
 import com.sk.sample.mall.account.domain.model.Account;
 
 public interface AccountService {
-	Account findById(Long id);
-	List<Account> findAll();
-	Page<Account> findAll(Pageable pageable);
-	
-	List<Account> findByNameLike(String name);
-	Account findByEmail(String email);
-	
-	Account register(Account account);
-	Account update(Long id, Account account);
+    Account findById(Long id);
 
-	void delete(Long id);
+    List<Account> findAll();
+
+    Page<Account> findAll(Pageable pageable);
+
+    List<Account> findByNameLike(String name);
+
+    Account findByEmail(String email);
+
+    Account register(Account account);
+
+    Account update(Long id, Account account);
+
+    void delete(Long id);
 }

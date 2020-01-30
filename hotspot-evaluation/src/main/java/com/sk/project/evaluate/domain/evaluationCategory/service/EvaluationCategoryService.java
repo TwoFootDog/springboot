@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface EvaluationCategoryService {
     List<EvaluationCategory> findAllEvaluationCategory();
+
     EvaluationCategory insertEvaluationCategory(EvaluationCategoryDto evaluationCategoryDto);
+
     EvaluationCategory updateEvaluationCategory(Long evaluationCategoryId, EvaluationCategoryDto evaluationCategoryDto);
 }

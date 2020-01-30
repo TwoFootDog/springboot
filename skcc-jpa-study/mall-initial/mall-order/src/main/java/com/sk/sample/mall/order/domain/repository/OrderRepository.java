@@ -6,6 +6,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import com.sk.sample.mall.order.domain.model.Order;
 
 @RepositoryRestResource
-public interface OrderRepository  extends PagingAndSortingRepository<Order, Long> {
+public interface OrderRepository extends PagingAndSortingRepository<Order, Long> {
 
 }

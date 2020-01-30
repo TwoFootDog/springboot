@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service("reviewService")
-public class RevieiwServiceImpl implements ReviewService{
+public class RevieiwServiceImpl implements ReviewService {
 
     private final ReviewRepository reviewRepository;
 

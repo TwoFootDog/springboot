@@ -11,22 +11,22 @@ import lombok.NoArgsConstructor;
 @Data
 @Embeddable
 public class ProductDescription {
-	@Enumerated
-	private ColorType colorType;
-	
-	@Enumerated(EnumType.STRING)
-	private SizeType sizeType;
-	
-	public ProductDescription(ColorType colorType, SizeType sizeType) {
-		this.colorType = colorType;
-		this.sizeType = sizeType;
-	}
-	
-	public ProductDescription(ColorType colorType) {
-		this.colorType = colorType;
-	}
-	
-	public ProductDescription(SizeType sizeType) {
-		this.sizeType = sizeType;
-	}
+    @Enumerated
+    private ColorType colorType;
+
+    @Enumerated(EnumType.STRING)
+    private SizeType sizeType;
+
+    public ProductDescription(ColorType colorType, SizeType sizeType) {
+        this.colorType = colorType;
+        this.sizeType = sizeType;
+    }
+
+    public ProductDescription(ColorType colorType) {
+        this.colorType = colorType;
+    }
+
+    public ProductDescription(SizeType sizeType) {
+        this.sizeType = sizeType;
+    }
 }

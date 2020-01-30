@@ -9,10 +9,10 @@ import lombok.Data;
 @Data
 @Entity
 public class Menu extends AbstractEntity {
-	private String name;
-	private Long price;
-	private String pictureUrl;
-	private String note;
-	
-	private MenuType menuType;
+    private String name;
+    private Long price;
+    private String pictureUrl;
+    private String note;
+
+    private MenuType menuType;
 }

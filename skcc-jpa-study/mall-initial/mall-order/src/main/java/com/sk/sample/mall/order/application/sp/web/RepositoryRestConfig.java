@@ -11,12 +11,12 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapt
 
 @Configuration
 public class RepositoryRestConfig extends RepositoryRestConfigurerAdapter {
-	@Autowired
-	private EntityManager entityManager;
-	
-	@Override
-	public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
-		config.exposeIdsFor(entityManager.getMetamodel().getEntities().stream().map(e -> e.getJavaType())
-				.collect(Collectors.toList()).toArray(new Class[0]));
-	}
+    @Autowired
+    private EntityManager entityManager;
+
+    @Override
+    public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
+        config.exposeIdsFor(entityManager.getMetamodel().getEntities().stream().map(e -> e.getJavaType())
+                .collect(Collectors.toList()).toArray(new Class[0]));
+    }
 }

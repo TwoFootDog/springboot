@@ -14,13 +14,18 @@ import com.sk.sample.mall.product.domain.model.SizeType;
 
 @RepositoryRestResource
 public interface ProductRepository extends PagingAndSortingRepository<Product, Long>,
-                                           QueryDslPredicateExecutor<Product> {
-	List<Product> findAll(Predicate predicate); 
-	
-	Product findByName(@Param("name") String name);
-	List<Product> findByProductDescriptionSizeType(@Param("sizeType") SizeType sizeType);
-	List<Product> findByProductDescriptionColorType(@Param("colorType") ColorType colorType);
-	List<Product> findByPriceValueGreaterThanEqual(@Param("value") Integer value);
-	List<Product> findByPriceValueLessThanEqual(@Param("value") Integer value);
-	List<Product> findByPriceValueGreaterThanAndPriceValueLessThan(@Param("value1") Integer value1, @Param("value2") Integer value2);
+        QueryDslPredicateExecutor<Product> {
+    List<Product> findAll(Predicate predicate);
+
+    Product findByName(@Param("name") String name);
+
+    List<Product> findByProductDescriptionSizeType(@Param("sizeType") SizeType sizeType);
+
+    List<Product> findByProductDescriptionColorType(@Param("colorType") ColorType colorType);
+
+    List<Product> findByPriceValueGreaterThanEqual(@Param("value") Integer value);
+
+    List<Product> findByPriceValueLessThanEqual(@Param("value") Integer value);
+
+    List<Product> findByPriceValueGreaterThanAndPriceValueLessThan(@Param("value1") Integer value1, @Param("value2") Integer value2);
 }

@@ -10,5 +10,6 @@ import java.util.List;
 @RepositoryRestResource
 public interface ScoreRepository extends PagingAndSortingRepository<Score, Long>, QuerydslPredicateExecutor<Score> {
     List<Score> findScoreByCustomerIdAndStoreId(Long customerId, Long storeId);
+
     List<Score> findScoresByStoreId(Long storeId);
 }
